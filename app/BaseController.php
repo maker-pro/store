@@ -91,4 +91,14 @@ abstract class BaseController
         return $v->failException(true)->check($data);
     }
 
+    public function __call($name, $arguments)
+    {
+        $result = [
+            'status' => 0,
+            'message' => '找不到该方法',
+            'result' => null
+        ];
+        return json($result, 400);
+    }
+
 }
